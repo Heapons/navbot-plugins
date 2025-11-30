@@ -238,13 +238,20 @@ Action Timer_QuotaThink(Handle timer)
 
 	if (g_thinkState == STATE_REMOVEBOT)
 	{
-		if (cv_quota_smart_kick.BoolValue)
+		if (cv_quota_target.IntValue == 0)
 		{
-			SmartBotKick();
+			KickAllNavBots();
 		}
 		else
 		{
-			KickRandomNavBot("Bot Quota System: Removing bot!");
+			if (cv_quota_smart_kick.BoolValue)
+			{
+				SmartBotKick();
+			}
+			else
+			{
+				KickRandomNavBot("Bot Quota System: Removing bot!");
+			}
 		}
 	}
 
